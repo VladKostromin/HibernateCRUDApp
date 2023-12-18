@@ -3,11 +3,11 @@ package com.crudapp.repository.hibernate;
 import com.crudapp.model.Writer;
 import com.crudapp.repository.WriterRepository;
 import com.crudapp.utils.HibernateUtils;
+import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import jakarta.persistence.*;
 import java.util.List;
 
 public class HibernateWriterImpl implements WriterRepository {
@@ -57,9 +57,12 @@ public class HibernateWriterImpl implements WriterRepository {
         try(Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             try{
-                session.merge(writer);
+                Writer writerToUpdate = findByID(writer.getId());
+                writerToUpdate.setFirstName(writer.getFirstName());
+                writerToUpdate.setLastName(writer.getLastName());
+                session.merge(writerToUpdate);
                 transaction.commit();
-                return writer;
+                return writerToUpdate;
             } catch (Throwable e) {
                 transaction.rollback();
                 throw e;

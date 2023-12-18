@@ -2,8 +2,8 @@ package com.crudapp.view;
 
 import com.crudapp.controller.LabelController;
 import com.crudapp.model.Label;
+import jakarta.persistence.EntityNotFoundException;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

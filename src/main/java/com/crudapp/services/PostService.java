@@ -39,6 +39,7 @@ public class PostService {
     public Post updatePost(Post post) {
         Post updatedPost = postRepository.update(post);
         if(updatedPost == null) throw new EntityNotFoundException("Post not exist");
+
         return updatedPost;
     }
 

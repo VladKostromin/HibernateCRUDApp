@@ -1,13 +1,10 @@
 package com.crudapp.model;
 
 import com.crudapp.enums.PostStatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.persistence.*;
-import lombok.ToString;
-import org.hibernate.annotations.BatchSize;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "Post")
+@Entity
 @Table(name = "posts")
 public class Post {
     @Id

@@ -53,9 +53,12 @@ public class HibernatePostImpl implements PostRepository {
         try(Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                Post updatedPost = session.merge(post);
+                Post postToUpdate = findByID(post.getId());
+                postToUpdate.setUpdated(post.getUpdated());
+                postToUpdate.setContent(post.getContent());
+                session.merge(postToUpdate);
                 transaction.commit();
-                return updatedPost;
+                return postToUpdate;
             } catch (Throwable e) {
                 transaction.rollback();
                 throw e;
@@ -87,16 +90,21 @@ public class HibernatePostImpl implements PostRepository {
     @Override
     public Post addLabelToPost(Long postId, Long labelId) {
         try(Session session = HibernateUtils.getSession()) {
-            Post post = session.get(Post.class, postId);
-            Label label = session.get(Label.class, labelId);
-            if(post == null && label == null) throw new EntityNotFoundException("Post and Label not found");
-            if(post == null) throw new EntityNotFoundException("Post not found");
-            if(label == null) throw new EntityNotFoundException("Label not found");
-            post.getLabels().add(label);
-            session.beginTransaction();
-            session.persist(post);
-            session.getTransaction().commit();
-            return post;
+            Transaction transaction = session.beginTransaction();
+            try {
+                Post post = findByID(postId);
+                Label label = session.get(Label.class, labelId);
+                if(post == null && label == null) throw new EntityNotFoundException("Post and Label not found");
+                if(post == null) throw new EntityNotFoundException("Post not found");
+                if(label == null) throw new EntityNotFoundException("Label not found");
+                post.getLabels().add(label);
+                session.merge(post);
+                transaction.commit();
+                return post;
+            } catch (Throwable e) {
+                transaction.rollback();
+                throw e;
+            }
         }
     }
 }
