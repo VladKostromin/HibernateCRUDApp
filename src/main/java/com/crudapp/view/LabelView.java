@@ -3,7 +3,7 @@ package com.crudapp.view;
 import com.crudapp.controller.LabelController;
 import com.crudapp.model.Label;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -93,7 +93,9 @@ public class LabelView {
                     System.out.println("Вы уверенны?(Y/N):");
                     String confirmation = scanner.nextLine();
                     if(confirmation.equalsIgnoreCase("y")) {
-                        labelController.deleteLabel(labelIdForDelete);
+                        Label deletedLabel = labelController.deleteLabel(labelIdForDelete);
+                        System.out.println("Удаленный Label:");
+                        System.out.println(deletedLabel);
                     } else if (confirmation.equalsIgnoreCase("n")) {
                         System.out.println("Отмена");
                         break;

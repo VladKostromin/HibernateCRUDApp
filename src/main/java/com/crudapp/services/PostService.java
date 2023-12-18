@@ -5,7 +5,7 @@ import com.crudapp.model.Post;
 import com.crudapp.repository.PostRepository;
 import com.crudapp.repository.hibernate.HibernatePostImpl;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 

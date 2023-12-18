@@ -3,7 +3,7 @@ package com.crudapp.view;
 import com.crudapp.controller.PostController;
 import com.crudapp.model.Post;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

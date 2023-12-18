@@ -12,7 +12,7 @@
         <property name="hibernate.connection.password">qaz923923</property>
 
         <!-- Настройка диалекта -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <!-- Настройки показа и форматирования SQL -->
         <property name="show_sql">false</property>

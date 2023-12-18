@@ -3,7 +3,7 @@ package com.crudapp.view;
 import com.crudapp.controller.WriterController;
 import com.crudapp.model.Writer;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

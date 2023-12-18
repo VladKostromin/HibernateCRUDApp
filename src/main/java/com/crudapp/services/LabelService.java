@@ -1,12 +1,10 @@
 package com.crudapp.services;
 
 import com.crudapp.model.Label;
-import com.crudapp.model.Writer;
 import com.crudapp.repository.LabelRepository;
-import com.crudapp.repository.WriterRepository;
 import com.crudapp.repository.hibernate.HibernateLabelImpl;
+import jakarta.persistence.EntityNotFoundException;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public class LabelService {

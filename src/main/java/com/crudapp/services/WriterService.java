@@ -6,7 +6,7 @@ import com.crudapp.model.Writer;
 import com.crudapp.repository.WriterRepository;
 import com.crudapp.repository.hibernate.HibernateWriterImpl;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 

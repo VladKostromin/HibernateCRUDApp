@@ -16,17 +16,18 @@
         <junit.version>5.10.0</junit.version>
         <mockito.version>5.5.0</mockito.version>
         <flyway.version>9.21.0</flyway.version>
-        <postgresql.version>42.2.19</postgresql.version>
-        <lombok.version>1.18.24</lombok.version>
+        <postgresql.version>42.6.0</postgresql.version>
+        <lombok.version>1.18.30</lombok.version>
         <mockito-core.version>5.3.1</mockito-core.version>
         <byte-buddy.version>1.14.9</byte-buddy.version>
+        <hibernate.version>6.4.0.Final</hibernate.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.6.0.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
@@ -59,13 +60,8 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.5.0</version>
+            <version>${mockito-core.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -96,8 +92,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>

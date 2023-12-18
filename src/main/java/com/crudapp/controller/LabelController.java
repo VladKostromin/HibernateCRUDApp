@@ -21,8 +21,8 @@ public class LabelController {
     public Label updateLabel(String labelName, Long labelId) {
         return labelService.updateLabel(new Label(labelId, labelName));
     }
-    public void deleteLabel(Long id) {
-        labelService.deleteLabelById(id);
+    public Label deleteLabel(Long id) {
+        return labelService.deleteLabelById(id);
     }
     public List<Label> getAllLabels(){
         return labelService.getAllLabels();
